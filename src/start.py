@@ -1,4 +1,8 @@
+from ui.ui import *
+
+
 def main():
-    print("test2")
+    ui = UI()
+    ui.run_ui()
 
 main()
