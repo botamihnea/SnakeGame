@@ -1,4 +1,4 @@
-from domain.domain import Board
+from domain.domain import *
 import random
 
 class Service:

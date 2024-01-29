@@ -53,7 +53,6 @@ class Board:
     def __str__(self):
         table = Texttable()
         size = self.get_size()
-        print(size)
         for i in range(size):
             added_row = []
             for j in range(size):
