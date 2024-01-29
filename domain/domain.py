@@ -40,7 +40,11 @@ class Board:
             return self.__board[i][j]
 
     def set_square(self, i, j, symbol):
-        if i < 0 or j < 0 or i > self.get_size() - 1 or j > self.get_size() - 1:
+        if i < 0 or j < 0 or i > self.get_size() - 1 or j > self.get_size() - 1 and symbol == "*":
+            raise ValueError("Game is over! You lost!")
+        elif symbol == "*" and self.get_square(i, j) == "+":
+            raise ValueError("Game is over! You lost")
+        elif i < 0 or j < 0 or i > self.get_size() - 1 or j > self.get_size() - 1:
             raise ValueError("Invalid coordinates!")
         else:
             self.__board[i][j] = symbol
