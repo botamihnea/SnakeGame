@@ -16,7 +16,7 @@ class Board:
 
                 line.split(" ")
                 size = line[0]
-
+        file.close()
         return int(size)
 
     def get_apples(self):
@@ -27,16 +27,20 @@ class Board:
                 if line == "":
                     continue
 
-                line.split(" ")
+                line = line.split(" ")
                 apples = line[1]
 
         return int(apples)
 
     def get_square(self, i, j):
-        return self.__board[i][j]
+        size = int(self.get_size())
+        if i < 0 or j < 0 or i > size - 1 or j > size - 1:
+            return ""
+        else:
+            return self.__board[i][j]
 
     def set_square(self, i, j, symbol):
-        if i < 0 or j < 0 or i > self.get_size() or j > self.get_size():
+        if i < 0 or j < 0 or i > self.get_size() - 1 or j > self.get_size() - 1:
             raise ValueError("Invalid coordinates!")
         else:
             self.__board[i][j] = symbol
@@ -54,9 +58,3 @@ class Board:
             table.add_row(added_row)
 
         return table.draw()
-
-def main():
-    board = Board()
-    print(board)
-
-main()
