@@ -36,60 +36,68 @@ class Service:
                     pos_j = j
 
         if direction == "up":
+            posi2 = 0
+            posj2 = 0
             for i in range(size):
                 for j in range(size):
                     if self.__board.get_square(i, j) == "+":
-                        self.__board.set_square(i, j, "")
                         counter += 1
+                        if counter == 2:
+                            posi2 = i
+                            posj2 = j
+                            self.__board.set_square(i, j, "")
 
             self.__board.set_square(pos_i - 1, pos_j, "*")
-            self.__board.set_square(pos_i, pos_j, "")
-            pos_i = pos_i - 1
-
-            for i in range(1, counter + 1):
-                self.__board.set_square(pos_i + i, pos_j, "+")
+            self.__board.set_square(pos_i, pos_j, "+")
+            self.__board.set_square(posi2, posj2, "")
 
         if direction == "down":
+            posi2 = 0
+            posj2 = 0
             for i in range(size):
                 for j in range(size):
                     if self.__board.get_square(i, j) == "+":
-                        self.__board.set_square(i, j, "")
                         counter += 1
+                        if counter == 2:
+                            posi2 = i
+                            posj2 = j
+                            self.__board.set_square(i, j, "")
+
             self.__board.set_square(pos_i + 1, pos_j, "*")
-            self.__board.set_square(pos_i, pos_j, "")
-
-            pos_i = pos_i + 1
-
-            for i in range(1, counter + 1):
-                self.__board.set_square(pos_i - i, pos_j, "+")
+            self.__board.set_square(pos_i, pos_j, "+")
+            self.__board.set_square(posi2, posj2, "")
 
         if direction == "left":
+            posi2 = 0
+            posj2 = 0
             for i in range(size):
                 for j in range(size):
                     if self.__board.get_square(i, j) == "+":
-                        self.__board.set_square(i, j, "")
                         counter += 1
+                        if counter == 2:
+                            posi2 = i
+                            posj2 = j
+                            self.__board.set_square(i, j, "")
+
             self.__board.set_square(pos_i, pos_j - 1, "*")
-            self.__board.set_square(pos_i, pos_j, "")
-
-            pos_j = pos_j - 1
-
-            for i in range(1, counter + 1):
-                self.__board.set_square(pos_i, pos_j + i, "+")
+            self.__board.set_square(pos_i, pos_j, "+")
+            self.__board.set_square(posi2, posj2, "")
 
         elif direction == "right":
+            posi2 = 0
+            posj2 = 0
             for i in range(size):
                 for j in range(size):
                     if self.__board.get_square(i, j) == "+":
-                        self.__board.set_square(i, j, "")
                         counter += 1
+                        if counter == 2:
+                            posi2 = i
+                            posj2 = j
+                            self.__board.set_square(i, j, "")
+
             self.__board.set_square(pos_i, pos_j + 1, "*")
-            self.__board.set_square(pos_i, pos_j, "")
-
-            pos_j = pos_j + 1
-
-            for i in range(1, counter + 1):
-                self.__board.set_square(pos_i, pos_j - i, "+")
+            self.__board.set_square(pos_i, pos_j, "+")
+            self.__board.set_square(posi2, posj2, "")
 
     def move(self, steps, direction):
         size = self.__board.get_size()
@@ -108,6 +116,7 @@ class Service:
                     if self.__board.get_square(i, j) == "+":
                         self.__board.set_square(i, j, "")
                         counter += 1
+
             self.__board.set_square(pos_i - steps, pos_j, "*")
             self.__board.set_square(pos_i, pos_j, "")
             pos_i = pos_i - steps
